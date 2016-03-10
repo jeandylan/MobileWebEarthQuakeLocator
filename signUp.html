@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html>
+<head>
+    <title>My Page</title>
+   
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/geoLocalizationForSignUp.js"></script>
+<link rel="stylesheet" href="css/ay.css" />
+ <script type="text/javascript">
+ function validation(){
+  if(document.getElementById("fullName").value==""){
+    //alert("blank");
+    $("#errMsg").html("Please enter a username");
+$('#dialog-anchor').click();
+    return false;
+  }
+
+    if(document.getElementById("address").value==""){
+    //alert("blank");
+    $("#errMsg").html("Please enter an address");
+$('#dialog-anchor').click();
+    return false;
+  }
+
+      if(document.getElementById("emailAddress").value==""){
+    //alert("blank");
+    $("#errMsg").html("Please enter an email address");
+$('#dialog-anchor').click();
+    return false;
+  }
+
+        if(document.getElementById("password").value==""){
+    //alert("blank");
+    $("#errMsg").html("Please enter a password");
+$('#dialog-anchor').click();
+    return false;
+  }
+
+          if(document.getElementById("confirmPassword").value==""){
+    //alert("blank");
+    $("#errMsg").html("Please confirm your password");
+$('#dialog-anchor').click();
+    return false;
+  }
+
+            if(document.getElementById("confirmPassword").value!=document.getElementById("password").value){
+    //alert("blank");
+    $("#errMsg").html("Passwords do not match");
+$('#dialog-anchor').click();
+    return false;
+  }
+
+  var email=document.getElementById("emailAddress").value;
+if(!email.match(/^[\w\._-]+@[\w\._-]+\.[a-zA-Z]{2,7}$/)){
+    $("#errMsg").html("Enter a correct email address please");
+    $('#dialog-anchor').click();
+    return false;
+}
+
+var pwLength=document.getElementById("password").value;
+if(pwLength.length<10){
+   $("#errMsg").html("Minimum password length must be 10 characters");
+    $('#dialog-anchor').click();
+    return false;
+}
+
+ }
+ </script>
+</head>
+<body>
+<body>
+<div data-role="page" data-theme="b">
+
+  <div data-role="header">
+        
+      
+
+    <h1>Earthquake Locator</h1>
+  </div>
+
+<form action="signUp.php"  method="post" onsubmit="return validation()" data-ajax="false">
+    <a href="#dialog" id="dialog-anchor" style="display:none" data-rel="dialog">Open dialog</a>
+  <div data-role="main" class="ui-content" >
+     
+                    <h3>Sign up for an account</h3>
+                    <label for="fullName">Username</label>
+                    <input type="text" name="fullName" id="fullName"  value="">
+                    <label for="address">Address</label>
+                    <input type="text" name="address" id="address"  value="">
+                    <label for="emailAddress">Email Address</label>
+                    <input type="text" name="emailAddress" id="emailAddress">
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" value="">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" value="">
+                    <div>
+                        <button href="#pagetwo" class="ui-btn" name="submit" onclick="return validation()" type="submit">Sign up</button>
+
+                    </div>
+
+                    <div>
+
+
+                    </div>
+<div>
+<a href="signIn.php">If you already have an account Login</a>
+</div>
+
+                </div>
+    </form>
+              
+
+            </div>
+      <div data-role="page" id="main">
+  
+</div>
+
+
+<div data-role="page" id="dialog" data-theme="b">
+  <div data-role="header">
+    <h1>Notice</h1>
+  </div>    
+  <div data-role="content" id="text">
+    <p id="errMsg"></p>
+  </div>    
+</div>    
+      
+  </div>
+
+
+
+
+	</body>
+</html>
